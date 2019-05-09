@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class AuctionItem extends Item {
     private int daysLeft;
     private double currentBid;
@@ -56,9 +58,10 @@ public class AuctionItem extends Item {
     }
 
     public String toString() {
+        DecimalFormat f = new DecimalFormat(".00");
         if(forSale && highBidder != null) {
-            return name + "($ " + currentBid + ", " + highBidder.getName() + ", " + daysLeft + " days left)";
+            return name + "($ " + f.format(currentBid) + ", " + highBidder.getName() + ", " + daysLeft + " days left)";
         }
-        return name + "($ " + listCost + ", None," + daysLeft + " days left)";
+        return name + "($ " + f.format(listCost) + ", None," + daysLeft + " days left)";
     }
 }

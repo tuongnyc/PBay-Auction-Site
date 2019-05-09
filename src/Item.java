@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class Item {
     protected String name;
     protected double listCost;
@@ -6,7 +8,9 @@ public class Item {
 
     public Item(String nm, double lc, User ow, boolean fs) {
         name = nm;
-        listCost = Math.round(lc * 100.0) / 100.0;  // round to two decimal places.
+        //listCost = Math.round(lc * 100.0) / 100.0;  // round to two decimal places.
+        DecimalFormat f = new DecimalFormat(".##");
+        listCost = Double.parseDouble(f.format(lc));
         owner = ow;
         forSale = fs;
     }
@@ -50,6 +54,7 @@ public class Item {
     }
 
     public String toString() {
-        return name + "($" + listCost + " - " + owner.getName() + " )";
+        DecimalFormat f = new DecimalFormat(".00");
+        return name + "($" + f.format(listCost) + " - " + owner.getName() + " )";
     }
 }

@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class SaleItem extends Item {
     private double discount;
 
@@ -19,10 +21,11 @@ public class SaleItem extends Item {
     }
 
     public String toString() {
+        DecimalFormat f = new DecimalFormat(".00");
         if(forSale) {
-            return name + "($ " + listCost + ", " + owner.getName() + ") ";
+            return name + "($ " + f.format(listCost) + ", " + owner.getName() + ") ";
         }
         else
-            return name + "($ " + listCost + ", " + owner.getName() + ") - Sold";
+            return name + "($ " + f.format(listCost) + ", " + owner.getName() + ") - Sold";
     }
 }
